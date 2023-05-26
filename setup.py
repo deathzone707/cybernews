@@ -7,7 +7,7 @@ _directory = os.path.abspath(os.path.dirname(__file__))
 with codecs.open(os.path.join(_directory, "README.md"), encoding="utf-8") as fh:
     long_description = "\n" + fh.read()
 
-VERSION = '1.1.1'
+VERSION = '1.1.2'
 DESCRIPTION = 'Get the latest Cyber Security updates curated from different sources under one roof.'
 LONG_DESCRIPTION = 'Python package and API that make use of Web-Scraping under the hood and provides a variety of curated news related to cyberspace from various sources under one roof. It is designed to help technology enthusiasts stay up-to-date with the latest updates in the field.'
 

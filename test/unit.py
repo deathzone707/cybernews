@@ -24,5 +24,5 @@ class TestCyberNews(unittest.TestCase):
                 self.news.get_news(news)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

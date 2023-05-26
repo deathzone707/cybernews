@@ -5,7 +5,6 @@ from utils.extractor import Extractor
 
 
 class CyberNews:
-
     def __init__(self) -> None:
         self._extractor = Extractor()
         self._news_types = [
@@ -13,24 +12,24 @@ class CyberNews:
                 "general": [
                     {
                         "https://ciosea.economictimes.indiatimes.com/news/next-gen-technologies": {
-                            "headlines": ".descBx h3 a",
-                            "author": ".metaTx",
-                            "fullNews": ".descBx p",
-                            "newsImg": "figure.avtar a img",
-                            "newsURL": ".descBx a",
+                            "headlines": "article.desc div h3.heading",
+                            "author": None,
+                            "fullNews": "article.desc div p.desktop-view",
+                            "newsImg": ".desc figure a img",
+                            "newsURL": ".desc figure a",
                             "date": None,
                         }
                     },
                     {
                         "https://telecom.economictimes.indiatimes.com/news/internet": {
-                            "headlines": ".descBx h3 a",
-                            "author": ".metaTx",
-                            "fullNews": ".descBx p",
-                            "newsImg": "figure.avtar a img",
-                            "newsURL": ".descBx a",
+                            "headlines": "article.desc div h3.heading",
+                            "author": None,
+                            "fullNews": "article.desc div p.desktop-view",
+                            "newsImg": ".desc figure a img",
+                            "newsURL": ".desc figure a",
                             "date": None,
                         }
-                    }
+                    },
                 ],
             },
             {
@@ -46,12 +45,12 @@ class CyberNews:
                         }
                     },
                     {
-                        "https://ciso.economictimes.indiatimes.com/tag/data+breaches": {
-                            "headlines": ".descBx h3 a",
-                            "author": ".metaTx",
-                            "fullNews": ".descBx p",
-                            "newsImg": "figure.avtar a img",
-                            "newsURL": ".descBx a",
+                        "https://ciso.economictimes.indiatimes.com/news/data-breaches": {
+                            "headlines": "article.desc div h3.heading",
+                            "author": None,
+                            "fullNews": "article.desc div p.desktop-view",
+                            "newsImg": ".desc figure a img",
+                            "newsURL": ".desc figure a",
                             "date": None,
                         }
                     },
@@ -70,12 +69,12 @@ class CyberNews:
                         }
                     },
                     {
-                        "https://ciso.economictimes.indiatimes.com/news/cyberwarfare": {
-                            "headlines": ".descBx h3 a",
-                            "author": ".metaTx",
-                            "fullNews": ".descBx p",
-                            "newsImg": "figure.avtar a img",
-                            "newsURL": ".descBx a",
+                        "https://ciso.economictimes.indiatimes.com/news/cybercrime-fraud": {
+                            "headlines": "article.desc div h3.heading",
+                            "author": None,
+                            "fullNews": "article.desc div p.desktop-view",
+                            "newsImg": ".desc figure a img",
+                            "newsURL": ".desc figure a",
                             "date": None,
                         }
                     },
@@ -94,12 +93,12 @@ class CyberNews:
                         }
                     },
                     {
-                        "https://ciso.economictimes.indiatimes.com/news/email-security": {
-                            "headlines": ".descBx h3 a",
-                            "author": ".metaTx",
-                            "fullNews": ".descBx p",
-                            "newsImg": "figure.avtar a img",
-                            "newsURL": ".descBx a",
+                        "https://ciso.economictimes.indiatimes.com/news/vulnerabilities-exploits": {
+                            "headlines": "article.desc div h3.heading",
+                            "author": None,
+                            "fullNews": "article.desc div p.desktop-view",
+                            "newsImg": ".desc figure a img",
+                            "newsURL": ".desc figure a",
                             "date": None,
                         }
                     },
@@ -123,21 +122,21 @@ class CyberNews:
                 "security": [
                     {
                         "https://ciosea.economictimes.indiatimes.com/news/security": {
-                            "headlines": ".descBx h3 a",
-                            "author": ".metaTx",
-                            "fullNews": ".descBx p",
-                            "newsImg": "figure.avtar a img",
-                            "newsURL": ".descBx a",
+                            "headlines": "article.desc div h3.heading",
+                            "author": None,
+                            "fullNews": "article.desc div p.desktop-view",
+                            "newsImg": ".desc figure a img",
+                            "newsURL": ".desc figure a",
                             "date": None,
                         }
                     },
                     {
                         "https://telecom.economictimes.indiatimes.com/tag/hacking": {
-                            "headlines": ".descBx h3 a",
-                            "author": ".metaTx",
-                            "fullNews": ".descBx p",
-                            "newsImg": "figure.avtar a img",
-                            "newsURL": ".descBx a",
+                            "headlines": "article.desc div h3.heading",
+                            "author": None,
+                            "fullNews": "article.desc div p.desktop-view",
+                            "newsImg": ".desc figure a img",
+                            "newsURL": ".desc figure a",
                             "date": None,
                         }
                     },
@@ -147,11 +146,11 @@ class CyberNews:
                 "cloud": [
                     {
                         "https://ciosea.economictimes.indiatimes.com/news/cloud-computing": {
-                            "headlines": ".descBx h3 a",
-                            "author": ".metaTx",
-                            "fullNews": ".descBx p",
-                            "newsImg": "figure.avtar a img",
-                            "newsURL": ".descBx a",
+                            "headlines": "article.desc div h3.heading",
+                            "author": None,
+                            "fullNews": "article.desc div p.desktop-view",
+                            "newsImg": ".desc figure a img",
+                            "newsURL": ".desc figure a",
                             "date": None,
                         }
                     }
@@ -161,11 +160,11 @@ class CyberNews:
                 "tech": [
                     {
                         "https://ciosea.economictimes.indiatimes.com/news/consumer-tech": {
-                            "headlines": ".descBx h3 a",
-                            "author": ".metaTx",
-                            "fullNews": ".descBx p",
-                            "newsImg": "figure.avtar a img",
-                            "newsURL": ".descBx a",
+                            "headlines": "article.desc div h3.heading",
+                            "author": None,
+                            "fullNews": "article.desc div p.desktop-view",
+                            "newsImg": ".desc figure a img",
+                            "newsURL": ".desc figure a",
                             "date": None,
                         }
                     },
@@ -175,11 +174,11 @@ class CyberNews:
                 "iot": [
                     {
                         "https://ciosea.economictimes.indiatimes.com/news/internet-of-things": {
-                            "headlines": ".descBx h3 a",
-                            "author": ".metaTx",
-                            "fullNews": ".descBx p",
-                            "newsImg": "figure.avtar a img",
-                            "newsURL": ".descBx a",
+                            "headlines": "article.desc div h3.heading",
+                            "author": None,
+                            "fullNews": "article.desc div p.desktop-view",
+                            "newsImg": ".desc figure a img",
+                            "newsURL": ".desc figure a",
                             "date": None,
                         }
                     },
@@ -189,21 +188,21 @@ class CyberNews:
                 "bigData": [
                     {
                         "https://ciosea.economictimes.indiatimes.com/news/big-data": {
-                            "headlines": ".descBx h3 a",
-                            "author": ".metaTx",
-                            "fullNews": ".descBx p",
-                            "newsImg": "figure.avtar a img",
-                            "newsURL": ".descBx a",
+                            "headlines": "article.desc div h3.heading",
+                            "author": None,
+                            "fullNews": "article.desc div p.desktop-view",
+                            "newsImg": ".desc figure a img",
+                            "newsURL": ".desc figure a",
                             "date": None,
                         }
                     },
                     {
                         "https://ciosea.economictimes.indiatimes.com/news/data-center": {
-                            "headlines": ".descBx h3 a",
-                            "author": ".metaTx",
-                            "fullNews": ".descBx p",
-                            "newsImg": "figure.avtar a img",
-                            "newsURL": ".descBx a",
+                            "headlines": "article.desc div h3.heading",
+                            "author": None,
+                            "fullNews": "article.desc div p.desktop-view",
+                            "newsImg": ".desc figure a img",
+                            "newsURL": ".desc figure a",
                             "date": None,
                         }
                     },
@@ -213,11 +212,11 @@ class CyberNews:
                 "business": [
                     {
                         "https://ciosea.economictimes.indiatimes.com/news/business-analytics": {
-                            "headlines": ".descBx h3 a",
-                            "author": ".metaTx",
-                            "fullNews": ".descBx p",
-                            "newsImg": "figure.avtar a img",
-                            "newsURL": ".descBx a",
+                            "headlines": "article.desc div h3.heading",
+                            "author": None,
+                            "fullNews": "article.desc div p.desktop-view",
+                            "newsImg": ".desc figure a img",
+                            "newsURL": ".desc figure a",
                             "date": None,
                         }
                     }
@@ -227,11 +226,11 @@ class CyberNews:
                 "mobility": [
                     {
                         "https://ciosea.economictimes.indiatimes.com/tag/mobility": {
-                            "headlines": ".descBx h3 a",
-                            "author": ".metaTx",
-                            "fullNews": ".descBx p",
-                            "newsImg": "figure.avtar a img",
-                            "newsURL": ".descBx a",
+                            "headlines": "article.desc div h3.heading",
+                            "author": None,
+                            "fullNews": "article.desc div p.desktop-view",
+                            "newsImg": ".desc figure a img",
+                            "newsURL": ".desc figure a",
                             "date": None,
                         }
                     }
@@ -241,11 +240,11 @@ class CyberNews:
                 "research": [
                     {
                         "https://ciosea.economictimes.indiatimes.com/tag/research": {
-                            "headlines": ".descBx h3 a",
-                            "author": ".metaTx",
-                            "fullNews": ".descBx p",
-                            "newsImg": "figure.avtar a img",
-                            "newsURL": ".descBx a",
+                            "headlines": "article.desc div h3.heading",
+                            "author": None,
+                            "fullNews": "article.desc div p.desktop-view",
+                            "newsImg": ".desc figure a img",
+                            "newsURL": ".desc figure a",
                             "date": None,
                         }
                     }
@@ -255,11 +254,11 @@ class CyberNews:
                 "socialMedia": [
                     {
                         "https://telecom.economictimes.indiatimes.com/search/social": {
-                            "headlines": ".descBx h3 a",
-                            "author": ".metaTx",
-                            "fullNews": ".descBx p",
-                            "newsImg": "figure.avtar a img",
-                            "newsURL": ".descBx a",
+                            "headlines": "article.desc div h3.heading",
+                            "author": None,
+                            "fullNews": "article.desc div p.desktop-view",
+                            "newsImg": ".desc figure a img",
+                            "newsURL": ".desc figure a",
                             "date": None,
                         }
                     }
@@ -269,24 +268,24 @@ class CyberNews:
                 "corporate": [
                     {
                         "https://ciosea.economictimes.indiatimes.com/news/corporate": {
-                            "headlines": ".descBx h3 a",
-                            "author": ".metaTx",
-                            "fullNews": ".descBx p",
-                            "newsImg": "figure.avtar a img",
-                            "newsURL": ".descBx a",
+                            "headlines": "article.desc div h3.heading",
+                            "author": None,
+                            "fullNews": "article.desc div p.desktop-view",
+                            "newsImg": ".desc figure a img",
+                            "newsURL": ".desc figure a",
                             "date": None,
                         }
                     },
                     {
                         "https://telecom.economictimes.indiatimes.com/news/industry": {
-                            "headlines": ".descBx h3 a",
-                            "author": ".metaTx",
-                            "fullNews": ".descBx p",
-                            "newsImg": "figure.avtar a img",
-                            "newsURL": ".descBx a",
+                            "headlines": "article.desc div h3.heading",
+                            "author": None,
+                            "fullNews": "article.desc div p.desktop-view",
+                            "newsImg": ".desc figure a img",
+                            "newsURL": ".desc figure a",
                             "date": None,
                         }
-                    }
+                    },
                 ]
             },
         ]
@@ -302,5 +301,6 @@ class CyberNews:
                     return self._extractor.data_extractor(news_type[news])
                 except Exception as e:
                     raise Exception(
-                        f"An error occurred while processing the news of type: '{news}': {str(e)}")
+                        f"An error occurred while processing the news of type: '{news}': {str(e)}"
+                    )
         raise ValueError(f"News type '{news}' not found")

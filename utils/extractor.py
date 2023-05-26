@@ -2,11 +2,12 @@
     Class for Exception Handling and Extracting data out of complex strings
 """
 import concurrent.futures
-from bs4 import BeautifulSoup
-import httpx
 
-from .sorting import Sorting
+import httpx
+from bs4 import BeautifulSoup
+
 from .performance import Performance
+from .sorting import Sorting
 
 
 class Extractor(Performance):
@@ -35,10 +36,10 @@ class Extractor(Performance):
         str: the extracted author name.
         """
         # Use the '_pattern1' regular expression to remove unwanted characters
-        author_name = self.remove_symbols(self._pattern1.sub('', name))
-        
+        author_name = self.remove_symbols(self._pattern1.sub("", name))
+
         if not self.is_valid_author_name(author_name):
-            return 'N/A'
+            return "N/A"
         return self.format_author_name(author_name)
 
     # Checking is news or some random advertisement
@@ -68,41 +69,50 @@ class Extractor(Performance):
         str: the extracted news date, or 'N/A' if the date could not be extracted.
         """
         # Use two regular expressions to remove unwanted characters
-        date = self._pattern3.sub('', self._pattern2.sub('', date))
+        date = self._pattern3.sub("", self._pattern2.sub("", date))
         # Use the '_pattern5' regular expression to match the news date
-        return self._pattern5.match(date).group() if news_date != '' else 'N/A'
+        return self._pattern5.match(date).group() if news_date != "" else "N/A"
 
     # Extracting Data From Single News
     def _extract_data_from_single_news(self, url: str, value: dict):
         news_data_from_single_news = []
         response = self.session.get(url, timeout=20, headers=self.headers)
-        soup = BeautifulSoup(response.text, 'lxml')
-        news_headlines = soup.select(value['headlines'])
-        news_author = soup.select(value['author'])
-        news_full_news = soup.select(value['fullNews'])
-        news_url = soup.select(value['newsURL'])
-        news_img_url = soup.select(value['newsImg'])
-        raw_news_date = soup.select(
-            value['date']) if value['date'] is not None else ''
+        soup = BeautifulSoup(response.text, "lxml")
+        news_headlines = soup.select(value["headlines"])
+        raw_news_author = (
+            soup.select(value["author"]) if value["author"] is not None else ""
+        )
+        news_full_news = soup.select(value["fullNews"])
+        news_url = soup.select(value["newsURL"])
+        news_img_url = soup.select(value["newsImg"])
+        raw_news_date = soup.select(value["date"]) if value["date"] is not None else ""
 
         for index in range(len(news_headlines)):
             if raw_news_date:
                 news_date = self._news_date_extractor(
-                    raw_news_date[index].text.strip(), raw_news_date)
+                    raw_news_date[index].text.strip(), raw_news_date
+                )
             else:
-                news_date = 'N/A'
+                news_date = "N/A"
+
+            if raw_news_author:
+                news_author = self._author_name_extractor(
+                    raw_news_author[index].text.strip()
+                )
+            else:
+                news_author = "N/A"
 
             if self._check_ad(news_date):
                 continue
 
             complete_news = {
-                'id': self.sorting.ordering_date(news_date),
-                'headlines': news_headlines[index].text.strip(),
-                'author': self._author_name_extractor(news_author[index].text.strip()),
-                'fullNews': news_full_news[index].text.strip(),
-                'newsURL': news_url[index]['href'],
-                'newsImgURL': news_img_url[index]['data-src'],
-                'newsDate': news_date
+                "id": self.sorting.ordering_date(news_date),
+                "headlines": news_headlines[index].text.strip(),
+                "author": news_author,
+                "fullNews": news_full_news[index].text.strip(),
+                "newsURL": news_url[index]["href"],
+                "newsImgURL": news_img_url[index]["data-src"],
+                "newsDate": news_date,
             }
             news_data_from_single_news.append(complete_news)
 
@@ -124,15 +134,20 @@ class Extractor(Performance):
         news_data = []
 
         with concurrent.futures.ThreadPoolExecutor() as executor:
-            future_to_news = {executor.submit(
-                self._extract_data_from_single_news, url, value): (url, value) for single_news in news for url, value in
-                              single_news.items()}
+            future_to_news = {
+                executor.submit(self._extract_data_from_single_news, url, value): (
+                    url,
+                    value,
+                )
+                for single_news in news
+                for url, value in single_news.items()
+            }
             for future in concurrent.futures.as_completed(future_to_news):
                 url = future_to_news[future]
                 try:
                     news_data_from_single_news = future.result()
                     news_data.extend(news_data_from_single_news)
                 except Exception as exc:
-                    print(f'{url} generated an exception: {exc}')
+                    print(f"{url} generated an exception: {exc}")
 
         return self.sorting.ordering_news(news_data)
