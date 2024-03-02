@@ -4,6 +4,7 @@
 import concurrent.futures
 
 import httpx
+import re
 from bs4 import BeautifulSoup
 
 from .performance import Performance
@@ -113,6 +114,7 @@ class Extractor(Performance):
                 "newsURL": news_url[index]["href"],
                 "newsImgURL": news_img_url[index]["data-src"],
                 "newsDate": news_date,
+                "fullURL": re.sub(r'\.com\/.{1,}\/.{1,}', '.com', url),
             }
             news_data_from_single_news.append(complete_news)
 
