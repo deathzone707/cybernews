@@ -55,3 +55,13 @@ news = CyberNews() # Instance is created
 | 13        | Research News      | news.get_news("research")     |
 | 14        | Corporate News     | news.get_news("corporate")    |
 | 15        | Social Media News  | news.get_news("socialMedia")  |
+
+<h2>AI Summary using Google Gemini</h2>
+
+```bash
+export GEMINI_API_KEY='<your API key>'
+
+python3 aicybernewssummary.py
+
+less $HOME/CyberSecurityArticleSummaries.txt
+```
