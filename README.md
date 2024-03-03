@@ -58,8 +58,10 @@ news = CyberNews() # Instance is created
 
 <h2>AI Summary using Google Gemini</h2>
 The web UI contains the pre-selected categories above. Select a category and wait, results will populate at the bottom of the page momentarily.
+
 ```bash
 export GEMINI_API_KEY='<your API key>'
 
 python3 app.py
+
 ```
