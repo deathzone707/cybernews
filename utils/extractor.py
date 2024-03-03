@@ -87,6 +87,7 @@ class Extractor(Performance):
         news_url = soup.select(value["newsURL"])
         news_img_url = soup.select(value["newsImg"])
         raw_news_date = soup.select(value["date"]) if value["date"] is not None else ""
+        full_url = re.sub(r'\.com\/.{1,}\/.{1,}', '.com', url)
 
         for index in range(len(news_headlines)):
             if raw_news_date:
@@ -110,11 +111,11 @@ class Extractor(Performance):
                 "id": self.sorting.ordering_date(news_date),
                 "headlines": news_headlines[index].text.strip(),
                 "author": news_author,
+                "fullURL": full_url,
                 "fullNews": news_full_news[index].text.strip(),
                 "newsURL": news_url[index]["href"],
                 "newsImgURL": news_img_url[index]["data-src"],
                 "newsDate": news_date,
-                "fullURL": re.sub(r'\.com\/.{1,}\/.{1,}', '.com', url),
             }
             news_data_from_single_news.append(complete_news)
 

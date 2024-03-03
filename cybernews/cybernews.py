@@ -12,6 +12,7 @@ class CyberNews:
                 "general": [
                     {
                         "https://ciosea.economictimes.indiatimes.com/news/next-gen-technologies": {
+                            "site": "https://ciosea.economictimes.indiatimes.com/news/next-gen-technologies",
                             "headlines": "article.desc div h3.heading",
                             "author": None,
                             "fullNews": "article.desc div p.desktop-view",
